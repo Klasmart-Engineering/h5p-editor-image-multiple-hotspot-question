@@ -63,6 +63,8 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
      */
     this.dialogOpen = false;
 
+    // OMG! I am not cleaning that up now ...
+
     /**
      * Task description semantics. Used to create task description field in editor.
      * @type {*[]}
@@ -97,7 +99,7 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
      * Hotspot settings semantics, used to make the popup on hotspots.
      * @type {Object|Array}
      */
-    this.elementFields = H5P.cloneObject(field.fields[3].field.fields[0].fields, true);
+    this.elementFields = H5P.cloneObject(field.fields[4].field.fields[0].fields, true);
 
     this.initQuestion();
   }

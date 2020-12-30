@@ -95,6 +95,10 @@
   width: 100%;
 }
 
+.h5p-image-hotspot-question-editor .h5p-hotspot-element.h5p-scale-distortion {
+  border: 0;
+}
+
 .h5p-image-hotspot-question-editor .h5p-hotspot-element.circle,
 .h5p-image-hotspot-question-editor .h5p-hotspot-element.circle:before  {
   border-radius: 50%;

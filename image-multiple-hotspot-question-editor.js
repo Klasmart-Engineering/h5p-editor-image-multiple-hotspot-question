@@ -129,6 +129,15 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
       });
     });
 
+    // Check for rotation scale distortion
+    this.parent.on('stepChanged', function(event) {
+      if (event.data.id === 1) {
+        self.elements.forEach(function(element) {
+          self.toolbar.checkScaleDistortion(element.$element);
+        });
+      }
+    });
+
     // Make sure widget can pass readies (used when processing semantics)
     this.passReadies = true;
     this.parent.ready(function () {

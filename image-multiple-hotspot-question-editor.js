@@ -352,6 +352,8 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
 
       // Apply new position
       self.toolbar.$element.css(newElementStyles);
+
+      self.fitElement(self.toolbar.$element, hotspotParams.computedSettings);
     });
 
     // Stopped rotation listener
@@ -361,12 +363,12 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
 
       hotspotParams.computedSettings.angle = event.data.angle;
 
-      const geometry = self.toolbar.getCurrentGeometry();
+      const sizeNPosition = self.toolbar.getElementSizeNPosition();
 
       self.toolbar.dnr.trigger('stoppedResizing', {
         useBrowserSize: false,
-        height: geometry.nominal.height / self.toolbar.dnr.containerEm,
-        width: geometry.nominal.width / self.toolbar.dnr.containerEm
+        height: sizeNPosition.height / self.toolbar.dnr.containerEm,
+        width: sizeNPosition.width / self.toolbar.dnr.containerEm
       });
     });
 
@@ -804,10 +806,8 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
    * @param {H5P.jQuery} $element
    * @param {Object} elementParams
    */
-  ImageMultipleHotspotQuestionEditor.CoursePresentation.prototype.fitElement = function ($element, elementParams) {
-    var self = this; // TODO: Required?
-
-    var sizeNPosition = self.dnb.getElementSizeNPosition($element);
+  ImageMultipleHotspotQuestionEditor.prototype.fitElement = function ($element, elementParams) {
+    var sizeNPosition = this.toolbar.getElementSizeNPosition($element);
     var updated = H5P.DragNBar.fitElementInside(sizeNPosition);
 
     var pW = (sizeNPosition.containerWidth / 100);
@@ -819,6 +819,7 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
     if (updated.width !== undefined) {
       elementParams.width = updated.width / pW;
       style.width = elementParams.width + '%';
+      updated.width = updated.width / this.toolbar.dnr.containerEm;
     }
     if (updated.left !== undefined) {
       elementParams.x = updated.left / pW;
@@ -827,6 +828,7 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
     if (updated.height !== undefined) {
       elementParams.height = updated.height / pH;
       style.height = elementParams.height + '%';
+      updated.height = updated.height / this.toolbar.dnr.containerEm;
     }
     if (updated.top !== undefined) {
       elementParams.y = updated.top / pH;
@@ -835,8 +837,6 @@ H5PEditor.widgets.imageMultipleHotspotQuestion = H5PEditor.ImageMultipleHotspotQ
 
     // Apply style
     $element.css(style);
-
-    self.dnb.fitToChild($element, false);
   };
 
   /**

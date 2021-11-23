@@ -232,3 +232,11 @@
 .h5p-image-hotspot-question-editor .image-hotspot-gui > img {
   width: 100%;
 }
+
+.h5p-imagemultiplehotspotquestion-editor .field.wizard .h5peditor-tab-backgroundimagesettings::before {
+  content: '\e913';
+}
+
+.h5p-imagemultiplehotspotquestion-editor .field.wizard .h5peditor-tab-hotspotsettings::before {
+  content: '\e915';
+}

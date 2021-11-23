@@ -228,3 +228,7 @@
 .h5p-image-hotspot-question-editor .disabling-overlay.hidden {
   display: none;
 }
+
+.h5p-image-hotspot-question-editor .image-hotspot-gui > img {
+  width: 100%;
+}

@@ -35,6 +35,11 @@
       "machineName": "H5P.ImageMultipleHotspotQuestion",
       "majorVersion": 1,
       "minorVersion": 0
+    },
+    {
+      "machineName": "EditorFontKidsLoop",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ]
 }
